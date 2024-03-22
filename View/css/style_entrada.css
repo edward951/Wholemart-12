@@ -1,0 +1,51 @@
+/*Trabajando en el footer*/
+.containerFooter{
+    width: 100%;
+    padding: 0px, 0px;
+    background-color:rgba(79, 54, 74, 0.8);
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1920px;
+    /*margin: auto;*/
+    margin-top: 110px;
+}
+
+.boxFooter{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.boxFooter .logo img{
+    position: relative;
+    width: 250px;
+    left: calc(35% - 50px);
+    top: -8px;
+    padding: 20px;
+}
+
+.boxFooter .derechosReservados{
+    max-width: 800px;
+}
+.boxFooter .derechosReservados p{
+
+    margin-top: 15px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+.boxFooter a{
+    margin-top: 10px;
+    color: #ffffff;
+    font-weight: 600;
+
+}
+.boxFooter a:hover{
+    opacity: 0.8;
+}
+
+.boxFooter a .fa-brands{
+    font-size: 20px;
+    padding: 6px 6px;
+}

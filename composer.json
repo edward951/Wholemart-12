@@ -1,0 +1,10 @@
+{
+    "require": {
+        "google/auth": "^1.30"
+    },
+    "autoload": {
+        "psr-4": {
+            "namespace\\": "Wholemart1.2/"
+        }
+    }
+}

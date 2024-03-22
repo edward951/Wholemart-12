@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+:root{
+   
+    --Tono1: #4F3649;
+    --Tono2: #C36DA9;
+    --text-button: #fff;
+}
+body{
+    background-image: url(../images/img2.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    backdrop-filter: blur(6px);
+
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.box{
+    position: relative;
+    top: -10px;
+    width: 380px;
+    height: 550px;
+    background: #351433;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 440px;
+    background: linear-gradient(0deg, transparent, rgb(195, 109, 169));
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 440px;
+    background: linear-gradient(0deg, transparent, rgb(195, 109, 169));
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+@keyframes animate{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+.formularioLogin{
+    position: absolute;
+    inset: 10px;
+    border-radius: 8px;
+    background: #dcd9d9;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.formularioLogin .logoLogin{
+    width: 150px;
+    height: 150px;
+    position:relative;
+    left: calc(43% - 50px);
+    top: -20px;
+}
+.formularioLogin h2{
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(79, 54, 74);
+    font-family: 'Orbitron', sans-serif;
+}
+.inputBox{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+.inputBox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #351433;
+    border-radius: 8px;
+    outline: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+}
+.inputBox label{
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    font-size: 1em;
+    color: rgb(79, 54, 74);
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+.inputBox input:valid ~ label,
+.inputBox input:focus ~ label{
+    color: #45f3ff ;
+    transform: translate(0px) translate(-34px);
+    font-size: 0.75em;
+}
+.inputBox i{
+    position: relative;
+    margin-left: 270px;
+    top: 35px;
+    font-size: 15px;
+    color: rgba(79, 54, 74, 0.6);
+}
+.box .inputBox form i{
+
+    position: relative;
+    margin-left: 310px;
+    top: 45px;
+    font-size: 15px;
+    color: rgba(79, 54, 74, 0.6);
+}
+/*Editando boton ingresar*/
+
+.btn input{
+    top: 15px;
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    /*text-transform: capitalize;*/
+    cursor: pointer;
+    border-radius: 10px;
+    user-select: none;
+    background: linear-gradient(to right, var(--Tono1), var(--Tono2));
+    border: none;
+    color: var(--text-button);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 300ms;
+   
+}
+.btn input:hover{
+    box-shadow: 1px 1px 30px 1px rgb(189, 110, 171);
+}
+/*Trabajando en el footer*/
+.containerFooter {
+    width: 100%;
+    padding: 0;
+    background-color: rgba(79, 54, 74, 0.8);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1920px;
+    margin-top: -40px;
+  }
+  
+  .boxFooter {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .boxFooter .logo img {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .boxFooter .derechosReservados {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .boxFooter .derechosReservados p {
+    margin-top: 15px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .boxFooter a {
+    margin-top: 10px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  .boxFooter a:hover {
+    opacity: 0.8;
+  }
+  
+  .boxFooter a .fa-brands {
+    font-size: 20px;
+    padding: 6px 6px;
+  }
+  
+  /* Estilos para pantallas de hasta 350px */
+  @media (max-width: 350px) {
+    .boxFooter .logo img {
+      max-width: 150px;
+    }
+    
+    .boxFooter .derechosReservados {
+      max-width: 500px;
+    }
+  }
+  
+  /* Estilos para pantallas grandes de más de 53 pulgadas */
+  @media (min-width: 53in) {
+    .containerFooter {
+      justify-content: space-between;
+    }
+    
+    .boxFooter {
+      width: 33.33%;
+    }
+  }
+  
+
