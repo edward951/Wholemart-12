@@ -41,13 +41,13 @@ session_start();
                     <h2>Registrar Venta</h2>
                         <div class="inputBox">                        
                             <i class="fa-solid fa-tags"></i>
-                            <label for="cliente">ID CLIENTE</label>
+                            <label for="cliente">Id cliente</label>
                             <input id="cliente" name="cliente" type="text" placeholder="cliente" required>
                             <i class="fa-sharp fa-solid fa-coins"></i>
-                            <label for="producto">ID PRODUCTO</label>
+                            <label for="producto">Id producto</label>
                             <input id="producto" name="producto" type="text" placeholder="producto" required>
                             <i class="fa-sharp fa-solid fa-coins"></i>
-                            <label for="cantidad">CANTIDAD</label>
+                            <label for="cantidad">Cantidad</label>
                             <input id="cantidad" name="cantidad" type="text" placeholder="cantidad" required>
                             
                             
