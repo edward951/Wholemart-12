@@ -1,66 +1,54 @@
 <?php
+session_start();
 
-//include_once "conexion.php";
+include_once "C:/wamp64/www/wholemart1.2/controlador/conexion1.php";
 
+if (isset($_POST['enviar'])) {
+    $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-if (isset($_REQUEST['enviar'])) {
-    session_start();
+    // Encriptar la contraseña ingresada por el usuario
+    $hashed_password = hash('sha256', $password);
 
-    $usuario = isset($_REQUEST['usuario']) ? $_REQUEST['usuario'] : '';
-    $password = isset($_REQUEST['password']) ? $_REQUEST['password'] : '';
-
-    //include_once "conexion.php";
-    // include_once "/wholemart/controlador/conexion1.php";
-    include_once "C:/wamp64/www/wholemart1.2/controlador/conexion1.php";
-
-    $sql = "SELECT * FROM `usuario` where USUARIO_NUMERO_DOCUMENTO='$usuario' and USUARIO_CONTRASENA ='$password';";
+    $sql = "SELECT * FROM usuario WHERE USUARIO_NUMERO_DOCUMENTO = '$usuario'";
     $resultSet = mysqli_query($conexion, $sql);
-    $row = mysqli_fetch_assoc($resultSet);
-    if ($row) { //if valida si hay resultados en la consulta
-        $nombre = $row['USUARIO_NOMBRE']; // guarda en variable el resultado de la consulta
-        $id = $row['ID_USUARIO'];
-        $rol = $row['USUARIO_ID_ROL'];
-        $_SESSION['USUARIO_NOMBRE'] = $row['USUARIO_NOMBRE']; // guardo en la sesion el resultado de la consulta
-        $_SESSION['ID_USUARIO'] = $row['ID_USUARIO'];
-        $_SESSION['activo'] = '1';
-        if ($rol == '1') {
-           // header("Location: langing_page.php");
 
-            //require_once "C:/xampp1/htdocs/wholemart1.2/View/langing_page.php";
-            //require_once "http://localhost/wholemart1.1/View/langing_page.html";
-?>
-            <script type="text/javascript" language="JavaScript">
-                window.location = '/wholemart1.2/View/langing_page.php';
-            </script>
-        <?php
+    if ($resultSet) {
+        $row = mysqli_fetch_assoc($resultSet);
+        if ($row) {
+            // Verificar si la contraseña encriptada coincide con la almacenada en la base de datos
+            if ($row['USUARIO_CONTRASENA'] === $hashed_password) {
+                // Contraseña correcta, establecer las variables de sesión
+                $_SESSION['USUARIO_NOMBRE'] = $row['USUARIO_NOMBRE'];
+                $_SESSION['ID_USUARIO'] = $row['ID_USUARIO'];
+                $_SESSION['activo'] = '1';
 
-        } elseif ($rol == '2') {
-            ?>
-            <script type="text/javascript" language="JavaScript">
-                window.location = '/wholemart1.2/View/bodega.php';
-            </script>
-            <?php
+                // Redirigir al usuario según su rol
+                $rol = $row['USUARIO_ID_ROL'];
+                if ($rol == '1') {
+                    header("Location: /wholemart1.2/View/langing_page.php");
+                    exit;
+                } elseif ($rol == '2') {
+                    header("Location: /wholemart1.2/View/bodega.php");
+                    exit;
+                } else {
+                    echo '<div class="alert alert-info" role="alert">NO ERES ADMINISTRADOR(A).</div>';
+                }
+            } else {
+                // Contraseña incorrecta
+                header("Location: /wholemart1.2/View/ALERTAS.html");
+                exit;
+            }
         } else {
-        ?>
-            <div class="alert alert-info" role="alert">
-                NO ERES ADMINISTRADOR(A).<?php echo $nombre ?>
-            </div>
-        <?php
+            // Usuario no encontrado
+            echo '<div class="alert alert-info" role="alert">Usuario no encontrado.</div>';
         }
     } else {
-        
-        
-
-        ?>
-        <script type="text/javascript" language="JavaScript" >
-        window.location = '/wholemart1.2/View/ALERTAS.html';
-       
-            </script>
-
-<?php
-
-
+        // Error en la consulta SQL
+        echo '<div class="alert alert-danger" role="alert">Error en la consulta SQL.</div>';
     }
 }
 
+// Cerrar la conexión a la base de datos
+mysqli_close($conexion);
 ?>
