@@ -42,13 +42,6 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-
-
-
-
-
-
-
 <?php
 if (isset($_REQUEST['insertar'])) {
     include_once "C:/wamp64/www/wholemart1.2/controlador/conexion1.php";

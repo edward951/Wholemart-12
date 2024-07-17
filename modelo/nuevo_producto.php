@@ -20,10 +20,6 @@
         echo alertaingresproducto ("hola se guardo correctamente") ;
  
 ?>
-           <!--<script type="text/javascript">
-           window.location = '/wholemart1.1/View/registrar_usuario.html';
-           </script>-->
-
 
     <?php
     } else {
@@ -37,5 +33,5 @@
 
 <?php
     }
- //fin insertar usuario
+ 
 ?>
